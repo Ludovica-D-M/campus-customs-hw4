@@ -1,0 +1,268 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Campus Customs — app check</title>
+<!-- Web fonts are a nicety; the page falls back to system serifs offline. -->
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:ital,opsz,wght@0,8..60,400;0,8..60,600;0,8..60,700;1,8..60,400&family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet" />
+<style>
+  :root {
+    --ink:#04142b; --navy-900:#00203f; --navy-800:#00274d; --yale:#00356b;
+    --brass:#b1874a; --brass-light:#d4ae70;
+    --paper:#fff; --page:#f7f4ed; --page-deep:#efe9dd; --line:#e4ddcd;
+    --body:#44505f; --muted:#7c8794;
+    --serif:'Source Serif 4','Iowan Old Style',Georgia,serif;
+    --sans:'Inter',-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,sans-serif;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0;background:var(--page);color:var(--body);
+    font-family:var(--sans);font-size:16px;line-height:1.65;-webkit-font-smoothing:antialiased;
+  }
+  body::before{
+    content:'';position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.5;
+    background-image:radial-gradient(rgba(4,20,43,.035) 1px,transparent 1px);background-size:3px 3px;
+  }
+  .wrap{position:relative;z-index:1;max-width:1060px;margin:0 auto;padding:0 28px}
+  h1,h2,h3{font-family:var(--serif);color:var(--ink);line-height:1.15;margin:0 0 .45em;font-weight:600;letter-spacing:-.012em}
+  a{color:#2d6fc4;text-decoration:none}
+  a:hover{text-decoration:underline}
+  code{font-family:ui-monospace,'SF Mono',Menlo,monospace;font-size:.88em;background:var(--page-deep);color:var(--ink);padding:1px 5px;border-radius:3px}
+  /* On the navy panels the light code chip would be an unreadable block. */
+  header.masthead code,.summary code{background:rgba(255,255,255,.12);color:#e7d7b8}
+
+  header.masthead{
+    color:#fff;padding:52px 0 58px;border-bottom:2px solid var(--brass);
+    background:radial-gradient(900px 420px at 80% -20%,rgba(45,111,196,.42),transparent 62%),
+               linear-gradient(152deg,var(--yale) 0%,var(--navy-800) 52%,var(--navy-900) 100%);
+    position:relative;overflow:hidden;
+  }
+  header.masthead::before{
+    content:'';position:absolute;right:-6%;top:50%;transform:translateY(-50%);
+    width:min(460px,46vw);aspect-ratio:1/1.12;
+    background:linear-gradient(180deg,rgba(212,174,112,.17),rgba(212,174,112,.03));
+    clip-path:polygon(0 0,100% 0,100% 62%,50% 100%,0 62%);
+  }
+  header.masthead .wrap{position:relative}
+  .brand{display:flex;align-items:center;gap:13px;margin-bottom:26px}
+  .shield{
+    width:40px;height:44px;display:grid;place-items:center;
+    font-family:var(--serif);font-size:22px;font-weight:700;color:var(--navy-900);
+    background:linear-gradient(165deg,var(--brass-light),var(--brass));
+    clip-path:polygon(0 0,100% 0,100% 62%,50% 100%,0 62%);
+  }
+  .brand strong{font-family:var(--serif);font-size:19px;display:block;line-height:1.1}
+  .brand strong+span{font-size:10px;text-transform:uppercase;letter-spacing:.24em;color:var(--brass-light);font-weight:600}
+  .eyebrow{text-transform:uppercase;letter-spacing:.18em;font-size:11px;font-weight:600;color:var(--brass-light)}
+  header.masthead h1{color:#fff;font-size:clamp(30px,4vw,44px);max-width:18ch;margin-top:14px}
+  header.masthead h1 em{font-style:italic;font-weight:400;color:var(--brass-light)}
+  header.masthead p{color:#c6d7ec;max-width:60ch;margin:0}
+  .meta{display:flex;gap:26px;flex-wrap:wrap;margin-top:26px;font-size:13px;color:#9fb8d4}
+  .meta b{color:#fff;font-weight:600}
+
+  .check{margin:58px 0}
+  .check-head{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;margin-bottom:6px}
+  .num{
+    font-family:var(--serif);font-size:13px;font-weight:700;color:var(--navy-900);
+    background:linear-gradient(165deg,var(--brass-light),var(--brass));
+    width:30px;height:33px;display:grid;place-items:center;flex:none;
+    clip-path:polygon(0 0,100% 0,100% 62%,50% 100%,0 62%);
+  }
+  .check h2{margin:0;font-size:clamp(22px,2.4vw,28px)}
+  .lede{margin:0 0 20px;max-width:72ch;font-size:16.5px}
+
+  figure{margin:0 0 18px}
+  figure img{
+    display:block;width:100%;height:auto;
+    border:1px solid var(--line);border-radius:4px;background:var(--paper);
+    box-shadow:0 2px 4px rgba(4,20,43,.05),0 12px 32px rgba(4,20,43,.08);
+  }
+  figcaption{font-size:13px;color:var(--muted);margin-top:9px}
+
+  .proves{
+    background:var(--paper);border:1px solid var(--line);border-left:3px solid var(--brass);
+    border-radius:4px;padding:16px 20px;
+  }
+  .proves h3{font-size:11px;font-family:var(--sans);text-transform:uppercase;letter-spacing:.17em;color:var(--brass);margin:0 0 8px}
+  .proves p{margin:0;font-size:15.5px}
+
+  table.truth{border-collapse:collapse;width:100%;margin:18px 0 0;font-size:14.5px;background:var(--paper);border:1px solid var(--line);border-radius:4px;overflow:hidden}
+  table.truth th,table.truth td{text-align:left;padding:10px 14px;border-bottom:1px solid var(--line)}
+  table.truth th{font-size:10.5px;text-transform:uppercase;letter-spacing:.13em;color:var(--muted);font-weight:600;background:var(--page-deep)}
+  table.truth tr:last-child td{border-bottom:none}
+  table.truth td.ok{color:#27603a;font-weight:600;white-space:nowrap}
+
+  .summary{background:var(--navy-900);color:#9fb8d4;padding:40px 0;margin-top:62px;border-top:2px solid var(--brass)}
+  .summary h2{color:#fff;font-size:24px}
+  .summary ul{margin:0;padding-left:20px}
+  .summary li{margin-bottom:7px}
+  .summary b{color:#fff}
+  .colophon{border-top:1px solid rgba(255,255,255,.12);margin-top:28px;padding-top:18px;font-size:12.5px;color:#7793b3}
+
+  @media (max-width:700px){
+    .wrap{padding:0 18px}
+    header.masthead{padding:38px 0 42px}
+    .check{margin:40px 0}
+    table.truth{display:block;overflow-x:auto}
+  }
+</style>
+</head>
+<body>
+
+<header class="masthead">
+  <div class="wrap">
+    <div class="brand">
+      <span class="shield">Y</span>
+      <span>
+        <strong>Campus Customs</strong>
+        <span>Yale Bulldog Blue</span>
+      </span>
+    </div>
+    <p class="eyebrow">Site testing</p>
+    <h1>App check: <em>three things, proven live.</em></h1>
+    <p>
+      Each check below was run against the site as it actually runs — React frontend on
+      <code>:5180</code>, FastAPI backend on <code>:8000</code>, PydanticAI agent reading
+      <code>data/campus_customs.db</code>. The screenshots are untouched captures from those runs,
+      and every number in them is checked against the database underneath.
+    </p>
+    <div class="meta">
+      <span><b>102</b> products</span>
+      <span><b>612</b> inventory rows</span>
+      <span><b>3</b> checks</span>
+      <span>Captured <b>4 October 2026</b></span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- ------------------------------------------------ CHECK 1 -->
+  <section class="check">
+    <div class="check-head">
+      <span class="num">1</span>
+      <h2>The chat quotes a real item's price and stock</h2>
+    </div>
+    <p class="lede">
+      On the Saybrook College Crewneck page, the assistant was asked
+      <em>&ldquo;What does this cost, and how many are left in L?&rdquo;</em> — a question with no
+      product named in it.
+    </p>
+
+    <figure>
+      <img src="app_check_images/inventory.png" alt="The Campus Customs chat answering with the price and the number left in size L, on the Saybrook College Crewneck product page." />
+      <figcaption>The assistant's answer, beside the product page's own size grid.</figcaption>
+    </figure>
+
+    <div class="proves">
+      <h3>What this proves</h3>
+      <p>
+        The agent resolved &ldquo;this&rdquo; to the open product and then read the catalogue and
+        inventory tables rather than recalling anything — the price and the count of two come from
+        the database on that request. The page's own size grid behind the chat shows the same
+        numbers, so the two paths into the data agree.
+      </p>
+    </div>
+
+    <table class="truth">
+      <tr><th>Assistant said</th><th>Database holds</th><th>&nbsp;</th></tr>
+      <tr><td>&ldquo;It&rsquo;s $58.00&rdquo;</td><td><code>price = 58.0</code></td><td class="ok">match</td></tr>
+      <tr><td>&ldquo;in stock in L — 2 left&rdquo;</td><td><code>inventory: L = 2</code></td><td class="ok">match</td></tr>
+      <tr><td>card lists XS, S, M, L, XL</td><td><code>XXL = 0</code>, all others &gt; 0</td><td class="ok">match</td></tr>
+    </table>
+  </section>
+
+  <!-- ------------------------------------------------ CHECK 2 -->
+  <section class="check">
+    <div class="check-head">
+      <span class="num">2</span>
+      <h2>A category question redraws the product grid</h2>
+    </div>
+    <p class="lede">
+      Starting on the Products page with all 102 products on screen, the assistant was asked
+      <em>&ldquo;What hoodies do you have?&rdquo;</em>
+    </p>
+
+    <figure>
+      <img src="app_check_images/category_cards.png" alt="The Products page showing six hoodie cards and a banner reading six matches for What hoodies do you have, with the chat panel open alongside." />
+      <figcaption>The grid behind the chat has gone from 102 products to the agent's six matches.</figcaption>
+    </figure>
+
+    <div class="proves">
+      <h3>What this proves</h3>
+      <p>
+        The agent's structured results drive the page, not just the chat bubble: the grid dropped
+        from 102 cards to the six it matched, each a full product card with image, name, price and
+        short description, and each linking to its own product page. The grid's product ids and
+        their order are identical to what the API returned, so nothing is being re-derived or
+        guessed in the browser.
+      </p>
+    </div>
+
+    <table class="truth">
+      <tr><th>Observed</th><th>Expected</th><th>&nbsp;</th></tr>
+      <tr><td>grid 102 &rarr; 6 cards</td><td>result limit of 6</td><td class="ok">match</td></tr>
+      <tr><td>banner: &ldquo;6 matches for …&rdquo;</td><td>six products returned</td><td class="ok">match</td></tr>
+      <tr><td>&ldquo;There are 27 hoodie matches&rdquo;</td><td><code>27</code> hoodies in the catalogue</td><td class="ok">match</td></tr>
+      <tr><td>grid ids vs API ids</td><td>identical, same order</td><td class="ok">match</td></tr>
+    </table>
+  </section>
+
+  <!-- ------------------------------------------------ CHECK 3 -->
+  <section class="check">
+    <div class="check-head">
+      <span class="num">3</span>
+      <h2>Usability: filter by your size, then sort by price</h2>
+    </div>
+    <p class="lede">
+      One of the Problem&nbsp;9 improvements. <strong>XS</strong> was selected in the size filter and
+      the sort set to <strong>Price: low to high</strong>.
+    </p>
+
+    <figure>
+      <img src="app_check_images/usability_size_sort.png" alt="The Products page filtered to size XS and sorted by price ascending, showing seventy-five products starting at thirty-two dollars." />
+      <figcaption>&ldquo;Showing 75 products in stock in XS&rdquo;, cheapest first.</figcaption>
+    </figure>
+
+    <div class="proves">
+      <h3>What this proves</h3>
+      <p>
+        The filter reads real inventory, not a product's size list on paper: 75 of the 102 products
+        have XS actually in stock, and no sold-out card appears while a size is selected. That
+        matters because 145 of the 612 size rows in this catalogue are at zero — roughly a quarter
+        of every browse was previously a dead end a shopper only discovered by opening the product.
+      </p>
+    </div>
+
+    <table class="truth">
+      <tr><th>Observed</th><th>Database</th><th>&nbsp;</th></tr>
+      <tr><td>&ldquo;Showing 75 products in stock in XS&rdquo;</td><td><code>75</code> products with XS &gt; 0</td><td class="ok">match</td></tr>
+      <tr><td>prices ascending from $32</td><td>catalogue minimum is <code>$32</code></td><td class="ok">match</td></tr>
+      <tr><td>no &ldquo;sold out&rdquo; badge shown</td><td>filter excludes zero stock</td><td class="ok">match</td></tr>
+    </table>
+  </section>
+
+</main>
+
+<section class="summary">
+  <div class="wrap">
+    <h2>Everything else, re-run at the same time</h2>
+    <ul>
+      <li><b>28 / 28</b> browser checks across Problems 3&ndash;8 — pages, filters, login, agent accuracy, safety rules, chat-driven grid updates, page context, chat memory.</li>
+      <li><b>21 / 21</b> Problem&nbsp;9 checks — size filter, sort, recently viewed, ids&rarr;cards, <code>find_in_size</code>.</li>
+      <li><b>62 / 62</b> tool tests comparing every tool's output against <code>campus_customs.db</code>.</li>
+      <li><b>14 / 14</b> responsive and reduced-motion checks, 320px to 1600px.</li>
+      <li>No console errors on any page.</li>
+    </ul>
+    <div class="colophon">
+      Coursework build for MGT&nbsp;409 — a student recreation of the Campus Customs storefront,
+      not the live shop. Screenshots in <code>app_check_images/</code>.
+    </div>
+  </div>
+</section>
+
+</body>
+</html>

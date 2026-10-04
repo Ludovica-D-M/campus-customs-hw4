@@ -1,0 +1,42 @@
+# ---- Secrets: never commit these ----
+.env
+.env.*
+!.env.example
+backend/.session_secret
+*.key
+*.pem
+
+# ---- Local-only data pack ----
+# The database and product images are supplied separately and are not part of
+# the repository. See README.md for where to put them.
+data/
+data.zip
+
+# ---- Python ----
+.venv/
+venv/
+__pycache__/
+*.py[cod]
+*.egg-info/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+
+# ---- Node / Vite ----
+node_modules/
+dist/
+*.tsbuildinfo
+.vite/
+
+# ---- macOS ----
+.DS_Store
+._*
+
+# ---- Editors ----
+.vscode/
+.idea/
+*.swp
+
+# ---- Logs and scratch ----
+*.log
+*.json.broken
