@@ -480,9 +480,9 @@ there are none, not because it was told to.
 `message` field from the response, and the product card below it links to
 `/products/davenport-college-crewneck`. No console errors.
 
-![Chat waiting for the agent](output/screenshots/flow-thinking.png)
+![Chat waiting for the agent](screenshots/flow-thinking.png)
 
-![The agent's reply in the chat](output/screenshots/flow-reply.png)
+![The agent's reply in the chat](screenshots/flow-reply.png)
 
 ---
 
@@ -607,7 +607,7 @@ catalogue does not record, the agent said so rather than filling the gap.
 Asked in the website chat widget, the same out-of-stock answer reaches the shopper, and the
 product card lists only the sizes that can actually be bought:
 
-![Out-of-stock answer in the chat](output/screenshots/chat-out-of-stock.png)
+![Out-of-stock answer in the chat](screenshots/chat-out-of-stock.png)
 
 ---
 
@@ -698,9 +698,9 @@ Driven in a real browser, against both servers:
 | "anything in gray under $50?" | all 6 cards verified against the database: real ids, prices match, every one gray and ≤ $50 |
 | Console errors | none |
 
-![Chat answer redrawing the Products grid](output/screenshots/chat-updates-page.png)
+![Chat answer redrawing the Products grid](screenshots/chat-updates-page.png)
 
-![A chat result opening the full product page](output/screenshots/chat-result-detail.png)
+![A chat result opening the full product page](screenshots/chat-result-detail.png)
 
 ### Walkthrough in a clean browser
 
@@ -720,11 +720,11 @@ No console or page errors at any step. Every figure on the detail page matches t
 price `68.0`, colors `["navy blue","white"]`, the description verbatim, and the six size
 quantities.
 
-![Products page before asking](output/screenshots/site-walkthrough-1-before.png)
+![Products page before asking](screenshots/site-walkthrough-1-before.png)
 
-![The grid redrawn by the assistant's answer](output/screenshots/site-walkthrough-2-updated.png)
+![The grid redrawn by the assistant's answer](screenshots/site-walkthrough-2-updated.png)
 
-![The product page opened from a chat result](output/screenshots/site-walkthrough-3-detail.png)
+![The product page opened from a chat result](screenshots/site-walkthrough-3-detail.png)
 
 ---
 
@@ -850,9 +850,9 @@ $58; S 15, M 5, L 25, XXL 25; XS and XL sold out):
 
 All 41 tool tests still pass; no console or page errors.
 
-![Chat history restored after signing back in](output/screenshots/memory-restored.png)
+![Chat history restored after signing back in](screenshots/memory-restored.png)
 
-![Answering "this" from the product page](output/screenshots/page-context-this.png)
+![Answering "this" from the product page](screenshots/page-context-this.png)
 
 ### Clean-slate test through the website
 

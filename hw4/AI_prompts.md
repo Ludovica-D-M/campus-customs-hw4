@@ -377,7 +377,10 @@ with no voice, no safety rules and no database rules. It is written up in `outpu
 
 ![Answering "this" from the product page](output/screenshots/page-context-this.png)
 
-## Hardening pass
+## Between Problems 8 and 9 — hardening pass
+
+Not an assignment problem. Logged here because the rule for this file is that every prompt goes in
+as it is given, in the order it was given.
 
 ### Prompt typed
 
@@ -455,10 +458,6 @@ Written up in `output/usability.md`.
 > I want a distinctive Yale/Campus Customs feel not a  generic ecommerce template. Make sure it is easy to use a responsive
 >
 > Create output/design.md with a short and concrete explanation of what you changed and why the design should help customers stay, browse, and buy
-
-### Follow-up prompt
-
-No follow-up prompt was needed for Problem 10.
 
 ### Follow-up prompt
 
